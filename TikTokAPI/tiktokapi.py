@@ -239,6 +239,11 @@ class TikTokAPI(object):
         with open(save_path, 'wb') as f:
             f.write(video_data)
 
+    def downloadVideoByUrl(self, video_url, save_path):
+        video_data = get_req_content(video_url, params=None, headers=self.headers)
+        with open(save_path, 'wb') as f:
+            f.write(video_data)
+
     def downloadVideoByIdNoWatermark(self, video_id, save_path):
         video_info = self.getVideoById(video_id)
         video_url = video_info["itemInfo"]["itemStruct"]["video"]["downloadAddr"]
